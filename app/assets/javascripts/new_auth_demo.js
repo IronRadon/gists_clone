@@ -1,10 +1,16 @@
-window.Gist = {
-  Models: {},
+window.GistApp = {
+  Models: {},	
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+  	GistApp.gists = new GistApp.Collections.Gists();
+  	
+  	GistApp.gists.fetch({
+  		success: function() {
+  			new GistApp.Routers.GistRouter({$rootEl: $('#content')});
+    		Backbone.history.start();
+  		}
+  	})   
   }
 };
-

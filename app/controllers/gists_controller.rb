@@ -1,7 +1,7 @@
 class GistsController < ApplicationController
-	include SessionsController
+	include SessionsHelper
 
-	def show
+	def index
 		@gists = Gist.where(:owner_id => current_user.id)
 		render :json => @gists
 	end
